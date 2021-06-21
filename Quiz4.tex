@@ -1,0 +1,339 @@
+\documentclass[10pt]{article}
+\textheight=23cm
+\textwidth=18cm
+\topmargin=-1cm
+\oddsidemargin=-1cm
+\parindent=0cm
+
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{graphics}
+\DeclareGraphicsExtensions{.png,.pdf,.jpg,.gif}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\BB{\mathbb{B}}
+\def \limx{n \rightarrow \infty}
+\def\QQ{\mathbb{Q}}
+\def\ZZ{\mathbb{Z}}
+\def\RR{\mathbb{R}}
+\def\NN{\mathbb{N}}
+\def\FF{\mathbb{F}}
+\newtheorem{Def}{Definición}
+\newtheorem{Teo}{Teorema}
+\newtheorem{Dem}{Demostración}
+\newtheorem{Ejem}{Ejemplo}
+\newtheorem{Sol}{Solución}
+
+
+
+\title{Quiz \# 4 Parte B}
+\author{Juan David Leal Campuzano\\
+Ángela María Arboleda\\
+Juan Fernando Herrera Santana 
+}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item (Valor 4 puntos) Sea $(\Omega ,\FF,P)=((0,1),B(\RR),\lambda_{(0,1)})$, sea $X_n:= n^2 \chi_{(0,\frac{1}{n})}$.\\
+    Verificar que:
+    
+    $$E(\liminf_{x\rightarrow \infty}{X_n})<\liminf_{x\rightarrow \infty}E(X_n)$$
+    
+    Sol: Podemos observar que $E(X_n)=n^2 \lambda(0,\frac{1}{n})=n$, si aplicamos el límite a esta expresión se obtiene:
+    $$\lim_{x\rightarrow \infty} E(X_n)=\lim_{x\rightarrow \infty}n^2 \lambda(0,\frac{1}{n})=\lim_{x\rightarrow \infty}n=\infty$$
+    
+    además $\lim_{x\rightarrow \infty}X_n=\lim_{x\rightarrow \infty}n^2\chi_{(0,\frac{1}{n})}=0$.\\ 
+    Por otro lado si el límite de una sucesión $X_n$ existe entonces $\limsup X_n=\liminf X_n$, como $\lim_{x\rightarrow \infty} E(X_n)$ y $\lim_{x\rightarrow \infty}X_n$ existen entonces 
+    $\limsup E(X_n)=\liminf E(X_n)=\infty$ y $\limsup X_n=\liminf X_n = 0$, así
+    $$0=E(\liminf X_n)<\liminf E(X_n)=\infty$$
+    
+    Ahora esto también se cumple para el límite superior
+    
+    $$0=E(\limsup X_n)<\limsup E(X_n)=\infty$$
+    
+    Esto no contradice el corolario consecuente del lema de Fatou porque no existe una variable aleatoria $Z$ tal que $X_n\leq Z$ para todo $n\geq 1$ es decir $X_n$ no es acotada para todo $n\geq 1$
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+    \item (Valor 6 puntos) Sea $(\Omega ,\FF,P)=((0,1),B(\RR),\lambda_{(0,1)})$, suponga
+    $$X_n(w)=\begin{cases}
+        2n^2& \frac{1}{2n}\leq w \leq \frac{1}{n}\\
+        0& O. W.
+    \end{cases}$$
+    
+    \begin{enumerate}
+     \item ¿Satisface $X_n$ el lema de Fatou? Explicar\\
+     Si lo satsiface dado que:
+     \begin{itemize}
+         \item $\lim_{n \rightarrow \infty}{X_n}=0$ y dado esto se sabe que  $\limsup X_n=\liminf X_n=0$
+         \item $\lim_{n \rightarrow \infty}{E(X_n)}=\lim_{n \rightarrow \infty}{2n^2 \lambda(\frac{1}{2n}, \frac{1}{n})}=\lim_{n \rightarrow \infty}{n}=\infty$, y por la misma argumentación anterior $\limsup E(X_n)=\liminf E(X_n)=\infty$
+         \item Teniendo en cuenta lo anterior $E(\liminf X_n)=0$ y así se cumple la desigualdad  
+        $$0=E(\liminf X_n)<\liminf E(X_n)=\infty$$
+        \end{itemize}
+    \item ¿Satisface $X_n$ el teorema de convergencia dominada? Explicar\\
+        Observando que $\lim E(X_n)=\infty$ y que $X_n\rightarrow X=0$ entonces 
+        $$\infty=\lim E(X_n)\neq E(X)=0$$
+        No lo cumple
+    \end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \item ( Valor 5 puntos) Sea $(X_n)_{n\geq 1}$ una sucesión de variables aleatorias tales que $-a<X_1<0$ para una constante $0<a<\infty$ y con $X_m\leq X_n$ para $m\leq n$. Demostrar que:
+    $$\lim_{\limx}E(X_n)=E(\lim_{\limx}X_n)$$
+    
+    Sol: Hay dos casos,el primero en el que $X_n$ sea acoatada y en el caso de que no lo sea.
+    \begin{itemize}
+        \item Suponga que $X_n$ es no acotada, por ende como $X_n$ es creciente entonces $X_n \rightarrow \infty$ y así $E(X_n) \rightarrow \infty$ dado que $E(\infty)=\infty$, así se cumpliría que $\lim E(X_n)=E(\lim X_n)$
+        \item Ahora suponga que $X_n$ es una sucesión acotada, es decir que existe $K\in \RR$ tal que $-a< X_n\leq K$ para todo $n$, dado que es creciente entonces converge,entonces :
+        $$E(X_n)\begin{cases}
+            -E(X_n) & \mbox{ si } 0<-X_n<a\\
+            E(X_n) & \mbox{ si } 0<X_n\\
+        \end{cases}$$
+        
+        entonces por el teorema de convergencia monótonoa 
+        $$\lim E(X_n)=E(\lim X_n)$$
+    \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item ( Valor 10 puntos) Demostrar que para cualquier variable aleatoria no
+negativa $X$ se satisface que:
+\begin{itemize}
+    \item $E(x)+E(\frac{1}{x})\geq 2$\\
+    Dado que X es una variable no negativa entonces $E(X)\geq 0$, así definase la variable $Z=\frac{(X-1)^2}{X}$, se tiene que $Z$ es no negativa dado que $(X-1)^2$ es no negativa y $X$ por hipótesis también, así entonces $E(Z)\geq 0$, partiendo de esto se da que:
+    \begin{align*}
+        E(Z)\geq& 0\\
+        E(\frac{(X-1)^2}{X})\geq& 0\\
+        E(\frac{X^2-2x+1}{X})\geq& 0\\
+        E(\frac{X^2+1}{X}-2)\geq& 0\\
+        E(\frac{X^2+1}{X})-E(2)\geq& 0\\
+        E(\frac{X^2+1}{X})\geq& 2\\
+        E(X+\frac{1}{X})\geq& 2\\
+        E(X)+E(\frac{1}{X})\geq& 2\\
+        &\blacksquare
+    \end{align*}
+    
+    
+    \item $E(max(X,\frac{1}{X}))\geq 1$\\
+    Primero veáse que la función máximo se puede escribir de la siguiente manera:
+    $$max(a,b)=\frac{a+b+|a-b|}{2}$$
+    entonces la función máximo se define de la siguiente manera
+    
+    $$max(a,b)=\begin{cases}
+        \frac{a+b+a-b}{2}& \mbox{ si } a-b>0\\
+        \frac{a+b-a+b}{2}& \mbox{ si } a-b<0\\
+    \end{cases}$$
+    $$max(a,b)=\begin{cases}
+        a& \mbox{ si } a>b\\
+        b& \mbox{ si } a<b\\
+    \end{cases}$$
+    
+    Ahora defínase la variable aleatoria $W=\frac{(X-1)^2+|X^2-1|}{2X}$, dado que 
+    $(X-1)^2$, $|X^2-1|$, $X$, son no negativas entonces $E(W)$ es no negativo, ahora
+    
+    \begin{align*}
+        E(W)\geq& 0\\
+        E(\frac{(X-1)^2+|X^2-1|}{2X})\geq& 0\\
+        E(\frac{X^2-2X+1+|X^2-1|}{2X})\geq& 0\\
+        E(\frac{X^2+1+|X^2-1|}{2X})- E(1)\geq& 0\\
+        E(\frac{\frac{X^2+1}{X}+\frac{|X^2-1|}{X}}{2})\geq& 1\\
+        E(\frac{X+\frac{1}{X}+|X-\frac{1}{X}|}{2})\geq& 1\\
+        E(max(X,\frac{1}{X}))\geq& 1\\
+        &\blacksquare
+    \end{align*}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item ( Valor 15 puntos) Se dice que una variable aleatoria X tiene distribución Beta con parámetro $\alpha>0$ y $\beta>0$ y se escribe $\overset{d}{\approx}BETA(\alpha,\beta)$ si su finción de densidad esta definidapor:
+    $$f(x):=\frac{1}{B(\alpha, \beta)}x^{\alpha-1}(1-x)^{\beta-1}\mbox{  si  } 0<x<1$$
+    y $f(x):=0 \mbox{ en otro caso}$\\
+    
+    donde $B(\alpha, \beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$, demostrar que:
+    
+    \begin{enumerate}
+        \item $$E(X^k)=\prod_{j=0}^{k-1}\frac{\alpha +j}{\alpha+\beta+j} \mbox{, } k=1,2,3 ...$$
+        %%%%%%fración    \frac{arriba}{abajo}
+        %%%%%%  alpha \alpha,  beta \beta, \Gamma, \rho, \lambda, e^{exponente}
+        %%%%%% integral   \int_{liminf}^{limsup}{___} , inversa h^{-1}
+        %%%%%%%   absoluto | |, 
+        %%%%% Para alinear ecuaciones \begin{align*}   \end{align*}
+        %%%%% Para escribir 
+        %%%%%% exponente _^{  }     subindice    -_{  }
+
+\begin{align*}
+E [X^{k}]=& \int_{0}^{1} x^{k} \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha) \Gamma(\beta)} x^{\alpha-1}(1-x)^{\beta-1} d x=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha) \Gamma(\beta)} \int_{0}^{1} x^{k+\alpha-1}(1-x)^{\beta-1} d x \\
+=& \frac{\Gamma(\alpha+k) \Gamma(\beta)}{\Gamma(k+\alpha+\beta)} \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha) \Gamma(\beta)} \underbrace{\int_{0}^{1} \frac{\Gamma(k+\alpha+\beta)}{\Gamma(\alpha+k) \Gamma(\beta)} x^{(k+\alpha)-1}(1-x)^{\beta-1} d x}_{\text {función de densidad de } B(k+\alpha, \beta) \text { que integra } 1} \\
+=& \frac{\Gamma(\alpha+k)}{\Gamma(\alpha)} \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha+\beta+k)}=\frac{(\alpha+k-1)(\alpha+k-2) \ldots \alpha \Gamma(\alpha)}{\Gamma(\alpha)} \\
+& \times \frac{\Gamma(\alpha+\beta)}{(\alpha+\beta+k-1)(\alpha+\beta+k-2) \ldots(\alpha+\beta) \Gamma(\alpha+\beta)} \\
+=& \frac{(\alpha+k-1) \ldots  \alpha}{(\alpha+\beta+k-1) \ldots(\alpha+\beta)}=\prod_{j=0}^{k-1}\frac{\alpha +j}{\alpha+\beta+j} \mbox{, } k=1,2,3 ... 
+\end{align*}
+
+Por lo tanto, para obtener la media, se tiene k=1 y entonces,
+$$
+ E[X]=\frac{\alpha}{\alpha+\beta}
+$$
+Para el segundo momento, se tiene k=2 y entonces,
+$$
+ E[X^{2}]=\frac{(\alpha+1) \alpha}{(\alpha+\beta+1)(\alpha+\beta)}
+$$
+y para la varianza se tiene que
+$$
+\operatorname{Var}(X)=E[X^{2}]-E[X]^{2}=\frac{\alpha \beta}{(\alpha+\beta)^{2}(\alpha+\beta+1)}
+$$
+        
+        \item $$E(X)=\frac{\alpha}{\alpha+\beta}~~~~~~Var(X)=\frac{\alpha \beta}{(\alpha+\beta+1)(\alpha + \beta)^2}$$
+        
+        \begin{align*}
+        E(X^k)=&\frac{1}{B(\alpha,\beta)}\int_{0}^{1}{(x^{k+\alpha-1}(1-x)^{b-1}}dx\\
+        =&\frac{B(\alpha+k,\beta)}{B(\alpha,\beta)}\\
+        =& \frac{\Gamma(\alpha+k)\Gamma(\alpha+\beta)}{\Gamma(\alpha+k+\beta)\Gamma(\alpha)}\\
+        \end{align*}
+        
+        Usando lo anterior procedemos a hallar la esperanza y la varianza de la función $B(\alpha, \beta)$: 
+        
+        Esperanza
+        \begin{align*}
+            E(X) =& \frac{\Gamma(\alpha+1)\Gamma(\alpha+\beta)}{\Gamma(\alpha+1+\beta)\Gamma(a)}\\
+            =& \frac{\alpha \Gamma(\alpha)\Gamma(\alpha+\beta)}{(\alpha +\beta)\Gamma(\alpha+\beta)\Gamma(\alpha)}\\
+            =&\frac{\alpha}{\alpha + \beta}
+        \end{align*}
+        
+        
+        \begin{align*}
+            E(X^2) =& \frac{\Gamma(\alpha+2)\Gamma(\alpha+\beta)}{\Gamma(\alpha+2+\beta)\Gamma(\alpha)}\\
+            =&\frac{(\alpha+1)\alpha}{(\alpha+\beta+1)(\alpha +\beta)}
+        \end{align*}
+        
+        Varianza:
+        \\
+        \begin{align*}
+            Var(X)=& E(X^2)-(E(X))^2\\
+            =&\frac{(\alpha+1)\alpha}{(\alpha+\beta+1)(\alpha +\beta)} - (\frac{\alpha}{\alpha + \beta})^2\\
+            =&\frac{(\alpha+1)(\alpha +\beta)\alpha-\alpha^2(\alpha+\beta+1)}{(\alpha+\beta+1)(\alpha +\beta)^2}\\
+            =&\frac{(\alpha^2)(\alpha) +(\alpha^2)(\beta)+\alpha^2+\alpha\beta-(\alpha^2)(\alpha)-(\alpha^2)(\beta)-\alpha^2}{(\alpha+\beta+1)(\alpha +\beta)^2}\\
+            =&\frac{\alpha\beta}{(\alpha+\beta+1)(\alpha +\beta)^2}\\
+        \end{align*}
+        
+        
+        \item Si $V$ y $W$ son variables aleatorias independientes con $V\overset{d}{\approx}\Gamma(\alpha, \lambda)$ y $W\overset{d}{\approx}\Gamma(\beta, \lambda)$, entonces la variable 
+        $$\frac{V}{W+V}\overset{d}{\approx} BETA(\alpha,\beta)$$
+        
+        Considerando la transformación definida por:
+        
+        $$h(V,W)=(V+W,\frac{V}{V+W})$$
+        Se puede observar que $h(W,V):(0,\infty)\times(0,\infty)\longrightarrow (0,\infty)\times (0,1)$
+        \begin{align*}
+            \frac{V}{V+W}=Y & ~~~ & V+W=X\\
+            \frac{V}{X}=Y & ~~~ & V+W=X\\
+            V=XY & ~~~ & V+W=X\\
+            V=XY & ~~~ & W=X-XY\\
+        \end{align*}
+        
+    Así    
+        $$h^{-1}=(XY,X-XY)$$
+        
+        \begin{align*}
+            J(h^{-1}(X,Y))= &\begin{array}{| c  c|}
+            Y & X \\
+             1-Y & -X 
+        \end{array}\\
+        =& |-YX-X+XY|\\
+        =& X\\
+        \end{align*}
+     
+     Como las variables aleatorias son independientes entonces $f_{V,W}=f_V(v)\cdot f_W(w)$:
+     $$f_{V,W}(v,w)=\frac{\lambda^{\alpha_1+\alpha_2}}{\Gamma(\alpha_1)\Gamma(\alpha_2)}e^{-\lambda(w+v)}v^{\alpha_1-1}w^{\alpha_2-1}\cdot 1_{(0,\infty)}(v)\cdot 1_{(0,\infty)}(w)$$
+     
+     
+     Por el toerema de tranformación se tiene que 
+     
+     $$f_{X,Y}(x,y)=J(h^{-1}(X,Y))f_{V,W}(XY,X-XY)$$
+     
+     \begin{align*}
+    f_{X,Y}(x,y)= & \frac{x\lambda^{\alpha_1+\alpha_2}}{\Gamma(\alpha_1)\Gamma(\alpha_2)}e^{-\lambda x}(xy)^{\alpha_1-1}(x-xy)^{\alpha_2-1}\cdot I_V(x,y)\\
+         =&\left [ \frac{\lambda^{\alpha_1+\alpha_2}}{\Gamma(\alpha_1+\alpha_2)}x^{\alpha_1+\alpha_2-1}e^{-\lambda x}\cdot 1_{(0,\infty)}(x) \right ]
+         \left [ \frac{\Gamma(\alpha_1+\alpha_2)}{\Gamma(\alpha_1)\Gamma(\alpha_2)}y^{\alpha_1+-1}(1-y)^{\alpha_2-1}\cdot 1_{(0,1)}(y) \right ]
+     \end{align*}
+    Si se toma a:
+    $$g_X(x)=\frac{\lambda^{\alpha_1+\alpha_2}}{\Gamma(\alpha_1+\alpha_2)}x^{\alpha_1+\alpha_2-1}e^{-\lambda x}\cdot 1_{(0,\infty)}(x)$$
+    $$g_Y(y)= \frac{\Gamma(\alpha_1+\alpha_2)}{\Gamma(\alpha_1)\Gamma(\alpha_2)}y^{\alpha_1-1}(1-y)^{\alpha_2-1}\cdot 1_{(0,1)}(y)$$
+    
+    se puede observar que $X\overset{d}{\approx}\Gamma(\alpha_1+\alpha_2,\lambda)$ y que 
+    $Y\overset{d}{\approx} BETA(\alpha_1,\alpha_2)$ 
+    \end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item ( Valor 10 puntos) Sean $X $ y $Y$ variables aleatorias
+    independientes e igualmente distribuidas con distribución
+    uniforme sobre el intervalo $(0, 2)$: Calcular:
+    \begin{itemize}
+        \item $P(X\geq 1 | X+Y \leq 3)$
+        \begin{align*}
+            P(X\geq 1 | X+Y \leq 3)=&\cfrac{P(X\geq 1 ~~and~~ X+Y \leq 3)}{P(X+Y \leq 3)}
+        \end{align*}
+        Veamos la distribución de la variable $W=X+Y$\\
+        
+        Sea $W=X+Y$ y $V=X$, así $h(W,X)=(V,W-V)$ y 
+        $$J(h(W,X))=-1$$
+        Así la función conjunta es:
+        
+        $$f_{W~V}(w,v)=|J(h(w,v))|f_{V~Y}(v,w-v)$$\\
+        $$f_{W~V}(w,v)=\begin{cases}
+            \frac{1}{4} & 0<v<2~~0<w-v<2\\
+            0 & O. W.\\
+            \end{cases}$$
+        $$f_{W~V}(w,v)=\begin{cases}
+            \frac{1}{4} & 0<x<2~v<w<v+2\\
+            0 & O. W.\\
+            \end{cases}$$
+        
+        Para hallar $f_W(w)$ se tiene que si $0<w-v<2$ entonces $w-2<v<w$:
+        $$f_{W}(w)=\begin{cases}
+            &\int_{0}^{w}{\frac{dv}{4}}~~~~~~0<w<2\\
+            &\int_{w-2}^{2}{\frac{dv}{4}}~~~~~~2<w<4\\
+            \end{cases}$$
+        $$f_{W}(w)=\begin{cases}
+            =&\frac{w}{4}~~~~~~0<w<2\\
+            & 1-\frac{w}{4}~~~~~~2<w<4\\
+        \end{cases}$$
+        
+        Como $X$ e $Y$ son independientes entonces $X$ y $W$ también los son por ende la función de probabilidad conjunta de $W$ y $X$ es el producto de las funciones de probabilidad univariadas
+        
+        $$f_{W~x}(w,x)=\begin{cases}
+            \frac{w}{8} & 0<x<2~~0<w<2\\
+            \frac{1}{2}-\frac{w}{8} & 0<x<2~~2<w<4\\
+            0 & O.~~W.
+        \end{cases}$$
+        
+        Devolviéndose a la probabilidade condicionada se da que 
+        
+        \begin{align*}
+            P(X\geq 1 | X+Y \leq 3)=&\cfrac{P(X\geq 1 ~~and~~ X+Y \leq 3)}{P(X+Y \leq 3)}\\
+            =&\cfrac{\int_{1}^{2}{\int_{0}^{2}{\frac{w}{8}dw}dx}+\int_{1}^{2}{\int_{2}^{3}{\frac{1}{2}-\frac{w}{8}dw}dx}}{\int_{0}^{2}{\frac{w}{4}dw}+\int_{2}^{3}{1-\frac{w}{4}}}\\
+            =&\cfrac{7/16}{7/8}\\
+            =&\cfrac{1}{2}
+        \end{align*}
+        
+        \item $E(X|X+Y\leq 3)$
+        \begin{align*}
+            E(X|X+Y\leq 3)=&\int_0^2{\int_0^2{\frac{xw}{8}}dwdx}+\int_0^2{\int_2^2{\frac{4x-xw}{8}}dwdx}\\
+            =&\int_0^2{xdx}\int_0^2{\frac{xw}{8}dw}+\int_0^2{\int_2^2{xdx}\frac{4-w}{8}dw}\\
+            =&2(1/4)+2(3/8)\\
+            =7/8
+        \end{align*}
+        
+    \end{itemize}
+    
+\end{enumerate}
+
+\end{document}
